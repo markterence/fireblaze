@@ -15,14 +15,14 @@ router.use((req, res, next) => {
 })
 
 // Add POST - /api/login
-router.post('/login', (req, res) => {
-  // const { username, password } = req.body
+router.post('/login', (req, res, next) => {
+  const { username, password } = req.body
   // eslint-disable-next-line no-console
   console.log(req.body)
-  // if (username === 'demo' && password === 'demo') {
-  //   req.session.authUser = { username: 'demo' }
-  //   return res.json({ username: 'demo' })
-  // }
+  if (username === 'demo' && password === 'demo') {
+    req.session.authUser = { username: 'demo' }
+    return res.json({ username: 'demo' })
+  }
   res.status(401).json({ message: 'Bad credentialss' })
 })
 

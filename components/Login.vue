@@ -1,7 +1,21 @@
 <template>
-  <div :class="[$style.container, $style.loginContainer]">
+  <div :class="[$style.container, $style.loginContainer, 'flex-column']">
+    <div class="position-absolute" :class="$style.logo">
+      <Logo class="w-50" />
+    </div>
     <b-container>
-      <p v-if="formError">{{ formError }}</p>
+      <b-row class="mb-2 justify-content-center">
+        <b-col sm="8" md="6" lg="4">
+          <b-alert
+            :show="!!formError"
+            style="height:20px"
+            class="mb-0 px-0 align-items-center justify-content-center d-flex small"
+            variant="danger"
+          >
+            {{ formError }}
+          </b-alert>
+        </b-col>
+      </b-row>
       <b-row class="mb-2 justify-content-center">
         <b-col sm="8" md="6" lg="4">
           <FloatingInput
@@ -27,7 +41,7 @@
       <b-row class="mt-4 mb-2 justify-content-center">
         <b-col sm="8" md="6" lg="4">
           <b-button
-            :class="[$style.loginBtn]"
+            :class="[$style.loginBtn, 'shadow']"
             variant="dark"
             block
             @click="login"
@@ -41,10 +55,12 @@
 </template>
 
 <script>
+import Logo from '~/components/Logo.vue'
 import FloatingInput from '~/components/FloatingInput.vue'
 export default {
   components: {
-    FloatingInput
+    FloatingInput,
+    Logo
   },
   data() {
     return {
@@ -63,6 +79,7 @@ export default {
         this.accessKey = ''
         this.secret = ''
         this.formError = null
+        this.$router.push('/')
       } catch (e) {
         this.formError = e.message
       }
@@ -72,6 +89,9 @@ export default {
 </script>
 
 <style module>
+.logo {
+  top: 40px;
+}
 .container {
   min-height: 100vh;
   display: flex;
