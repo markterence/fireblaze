@@ -66,8 +66,8 @@ export default {
   },
   data() {
     return {
-      accessKey: null,
-      secret: null,
+      accessKey: 'demo',
+      secret: 'demo',
       formError: null
     }
   },
@@ -78,8 +78,8 @@ export default {
           username: this.accessKey,
           password: this.secret
         })
-        this.accessKey = ''
-        this.secret = ''
+        // this.accessKey = ''
+        // this.secret = ''
         this.formError = null
         this.$router.push('/')
       } catch (e) {

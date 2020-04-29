@@ -16,6 +16,9 @@ export const actions = {
       commit('SET_USER', req.session.authUser)
     }
   },
+  logout({ commit }) {
+    commit('SET_USER', null)
+  },
   async login({ commit }, { username, password }) {
     try {
       const { data } = await axios.post('/api/login', { username, password })
