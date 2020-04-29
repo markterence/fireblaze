@@ -16,40 +16,42 @@
           </b-alert>
         </b-col>
       </b-row>
-      <b-row class="mb-2 justify-content-center">
-        <b-col sm="8" md="6" lg="4">
-          <FloatingInput
-            id="username"
-            v-model="accessKey"
-            autocomplete="off"
-            type="text"
-            label="Access Key"
-          />
-        </b-col>
-      </b-row>
-      <b-row class="mb-2 justify-content-center">
-        <b-col sm="8" md="6" lg="4">
-          <FloatingInput
-            id="password"
-            v-model="secret"
-            autocomplete="off"
-            type="password"
-            label="Secret Key"
-          />
-        </b-col>
-      </b-row>
-      <b-row class="mt-4 mb-2 justify-content-center">
-        <b-col sm="8" md="6" lg="4">
-          <b-button
-            :class="[$style.loginBtn, 'shadow']"
-            variant="dark"
-            block
-            @click="login"
-          >
-            Login
-          </b-button>
-        </b-col>
-      </b-row>
+      <b-form @submit.prevent="login">
+        <b-row class="mb-2 justify-content-center">
+          <b-col sm="8" md="6" lg="4">
+            <FloatingInput
+              id="username"
+              v-model="accessKey"
+              autocomplete="off"
+              type="text"
+              label="Access Key"
+            />
+          </b-col>
+        </b-row>
+        <b-row class="mb-2 justify-content-center">
+          <b-col sm="8" md="6" lg="4">
+            <FloatingInput
+              id="password"
+              v-model="secret"
+              autocomplete="off"
+              type="password"
+              label="Secret Key"
+            />
+          </b-col>
+        </b-row>
+        <b-row class="mt-4 mb-2 justify-content-center">
+          <b-col sm="8" md="6" lg="4">
+            <b-button
+              :class="[$style.loginBtn, 'shadow']"
+              variant="dark"
+              block
+              type="submit"
+            >
+              Login
+            </b-button>
+          </b-col>
+        </b-row>
+      </b-form>
     </b-container>
   </div>
 </template>
