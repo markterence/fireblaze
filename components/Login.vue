@@ -3,30 +3,24 @@
     <b-container>
       <b-row class="mb-2 justify-content-center">
         <b-col sm="8" md="6" lg="4">
-          <b-input
+          <FloatingInput
             id="username"
+            v-model="accessKey"
+            autocomplete="off"
             type="text"
-            :class="[$style.floating, 'py-4']"
-            placeholder=""
-          ></b-input>
-          <label :class="[$style.floatingLabel, 'text-muted']" for="username"
-            >Access Key</label
-          >
+            label="Access Key"
+          />
         </b-col>
       </b-row>
       <b-row class="mb-2 justify-content-center">
         <b-col sm="8" md="6" lg="4">
-          <div class="d-flex flex-column-reverse ">
-            <b-input
-              id="password"
-              type="password"
-              :class="[$style.floating, 'py-4']"
-              placeholder=""
-            ></b-input>
-            <label :class="[$style.floatingLabel, 'text-muted']" for="password"
-              >Secret Key</label
-            >
-          </div>
+          <FloatingInput
+            id="password"
+            v-model="secret"
+            autocomplete="off"
+            type="text"
+            label="Secret Key"
+          />
         </b-col>
       </b-row>
       <b-row class="mt-4 mb-2 justify-content-center">
@@ -41,7 +35,18 @@
 </template>
 
 <script>
-export default {}
+import FloatingInput from '~/components/FloatingInput.vue'
+export default {
+  components: {
+    FloatingInput
+  },
+  data() {
+    return {
+      accessKey: null,
+      secret: null
+    }
+  }
+}
 </script>
 
 <style module>
