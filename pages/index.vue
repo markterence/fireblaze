@@ -9,6 +9,7 @@
       text-variant="light"
       no-close-on-route-change
       width="240px"
+      :body-class="$style.sidebarScrollbar"
     >
       <template v-slot:title>
         <div class="shadow">
@@ -22,11 +23,11 @@
                 size="sm"
                 placeholder="Filter by volume name..."
                 type="text"
-                class="rounded-pill mb-1"
+                :class="[$style.iconPadding, 'rounded-pill mb-1']"
               />
               <SearchIcon
                 class="text-dark position-absolute mr-1 mb-1"
-                style="right: 28px;"
+                style="right: 24px;"
                 width="18px"
               />
             </div>
@@ -40,7 +41,10 @@
             v-for="volume in 30"
             :key="`volume-${volume}`"
             :exact-active-class="$style.sidebarLinkActive"
-            :link-classes="[$style.sidebarLink, 'text-light']"
+            :link-classes="[
+              $style.sidebarLink,
+              'text-light mx-2 p-2 rounded-lg'
+            ]"
             :to="'/volume/' + volume"
           >
             volume #{{ volume }}
@@ -53,8 +57,13 @@
         </b-nav>
       </div>
       <template v-slot:footer>
-        <div class="p-2">
-          Something 🆒 👍!
+        <div class="p-2 py-3">
+          <div class="d-flex align-items-center">
+            <small>Something</small>
+            <span class="ml-auto">
+              🆒 👍!
+            </span>
+          </div>
         </div>
       </template>
     </b-sidebar>
@@ -107,11 +116,24 @@ export default {
 .content {
   margin-left: 240px;
 }
-
+.iconPadding {
+  padding-right: 36px;
+}
+.sidebarLink {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
 .sidebarLink:hover {
-  background-color: hsl(210, 10%, 18%);
+  background-color: hsl(210, 10%, 15%);
 }
 .sidebarLinkActive {
-  background-color: hsl(210, 10%, 15%);
+  background-color: hsl(210, 10%, 12%);
+}
+.sidebarScrollbar::-webkit-scrollbar-track,
+.sidebarScrollbar {
+  background: hsl(210, 10%, 18%);
+  /* firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: gray hsl(210, 10%, 15%);
 }
 </style>
