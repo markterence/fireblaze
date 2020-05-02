@@ -24,10 +24,21 @@
       class="bg-dark text-light col-lg-8 p-0 mb-2 align-items-center border rounded p-3"
     >
       <span>true sight mode</span>
-      <div class="mt-2 d-flex">
-        <span class="mr-2">Folder: </span>
-        <b-input v-model="folder" type="text" size="sm"></b-input>
-        <b-button class="mx-2" size="sm" @click="listDir(folder)">Go</b-button>
+      <div class="mt-2">
+        <div class="d-flex">
+          <span class="mr-2">Folder: </span>
+          <b-input v-model="folder" type="text" size="sm"></b-input>
+          <b-button class="mx-2" size="sm" @click="listDir(folder)"
+            >Go</b-button
+          >
+        </div>
+
+        <div class="mt-4">
+          <FileBreadCrumb
+            :folder="currentPath"
+            @node-click="(e) => listDir(e.path)"
+          />
+        </div>
       </div>
     </div>
     <div v-if="false" class="d-flex col-lg-4 p-0 mb-2 align-items-center">
@@ -73,9 +84,14 @@
 /* eslint-disable vue/no-unused-components */
 import axios from 'axios'
 import _ from 'lodash'
+import FileBreadCrumb from '~/components/FileBreadCrumb.vue'
 export default {
+  components: {
+    FileBreadCrumb
+  },
   data() {
     return {
+      currentPath: null,
       formError: null,
       searchKeyword: '',
       selectedFields: [],
@@ -87,7 +103,8 @@ export default {
         }
       ],
       list: [],
-      folder: null,
+      folder:
+        '/home/coffeekitkat/projects/production/sync-up/.fireblaze-appdata',
       selectedFiles: []
     }
   },
@@ -146,7 +163,7 @@ export default {
         const res = await axios.post('/api/browse', {
           folder
         })
-
+        this.currentPath = folder
         this.list = res.data
       } catch (error) {
         this.formError = error.message
