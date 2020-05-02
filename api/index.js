@@ -1,8 +1,9 @@
 import express from 'express'
 
+import { admin as firebaseAdmin } from './firebase/admin'
+
 // Create express router
 const router = express.Router()
-
 // Transform req & res to have the same API as express
 // So we can use res.status() & res.json()
 const app = express()
@@ -19,9 +20,16 @@ router.post('/login', (req, res, next) => {
   const { username, password } = req.body
   // eslint-disable-next-line no-console
   console.log(req.body)
-  if (username === 'demo' && password === 'demo') {
-    req.session.authUser = { username: 'demo', admin: true }
-    return res.json({ username: 'demo' })
+  let accessKey = process.env.APP_ACCESS_KEY
+  let secretKey = process.env.APP_SECRET_KEY
+
+  if (process.env.FIREBLAZE_TEST_DEV) {
+    accessKey = 'demo'
+    secretKey = 'demo'
+  }
+  if (username === accessKey && password === secretKey) {
+    req.session.authUser = { username: accessKey, admin: true }
+    return res.json({ username: accessKey })
   }
   res.status(401).json({ message: 'Bad credentialss' })
 })
@@ -36,7 +44,7 @@ const path = require('path')
 router.post('/browse', async (req, res) => {
   console.log(req.session.authUser)
   if (!req.session.authUser) {
-    return res.status(401)
+    return res.status(401).json({ message: 'Bad credentialss' })
   }
   const folder = req.body.folder
   const { listDir, list } = require('./util/folders')
@@ -61,9 +69,10 @@ router.post('/browse', async (req, res) => {
 })
 
 const fs = require('fs')
-router.post('/fireblaze-start', (req, res) => {
+const { isDirectory } = require('./util/folders')
+router.post('/fireblaze-start', async (req, res) => {
   if (!req.session.authUser) {
-    return res.status(401)
+    return res.status(401).json({ message: 'Bad credentialss' })
   }
   // volume should be a path
   // selectedFiles are array of file and dir to be included on the zip
@@ -71,10 +80,14 @@ router.post('/fireblaze-start', (req, res) => {
   // eslint-disable-next-line no-unused-vars
   const { volume, selectedFiles } = req.body
 
-  const ARTIFACTS_PATH = path.join(process.env.artifacts_path, 'artifacts')
+  // The path should exist otherwise it will error
+  const ARTIFACTS_PATH = path.join(process.env.ARTIFACTS_PATH, 'artifacts')
 
-  const basename = path.basename(volume)
+  let basename = path.basename(volume)
   const artifactFilename = Date.now().toString()
+  // ensure no dot on start of name
+  basename = basename.replace(/^\.*/, '')
+
   const savePath = `${ARTIFACTS_PATH}/${basename}_${artifactFilename}.zip`
   console.log(`SavePath`, savePath)
 
@@ -108,22 +121,61 @@ router.post('/fireblaze-start', (req, res) => {
     archive.pipe(output)
 
     for (const p of zipDirs) {
-      archive.directory(p + '/', false)
+      if (isDirectory(p)) {
+        archive.directory(p, path.basename(p))
+      } else {
+        archive.file(p, {
+          name: path.basename(p)
+        })
+      }
     }
-    archive.finalize()
+    return archive.finalize()
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  function zip2(zipdirs, outDir) {
+    const AdmZip = require('adm-zip')
+    const zip = new AdmZip()
+
+    zipdirs.forEach((p) => {
+      if (isDirectory(p)) {
+        zip.addLocalFolder(p, path.basename(p))
+      } else {
+        zip.addLocalFile(p)
+      }
+    })
+
+    zip.writeZip(outDir)
   }
 
   try {
-    // await zip(selectedFiles, savePath)
-    // const fileStat = fs.statSync(savePath)
-    const fileStat = fs.statSync(
-      '/home/coffeekitkat/projects/production/sync-up/.fireblaze-appdata/config.json'
-    )
-    return res.json(200).json({
+    await zip(selectedFiles, savePath)
+    const fileStat = fs.statSync(savePath)
+    // const fileStat = fs.statSync(
+    //   '/home/coffeekitkat/projects/production/sync-up/.fireblaze-appdata/config.json'
+    // )
+    const bucket = firebaseAdmin.storage().bucket()
+    await bucket.upload(savePath, {
+      // Support for HTTP requests made with `Accept-Encoding: gzip`
+      gzip: true,
+      // By setting the option `destination`, you can change the name of the
+      // object you are uploading to a bucket.
+      metadata: {
+        // Enable long-lived HTTP caching headers
+        // Use only if the contents of the file will never change
+        // (If the contents will change, use cacheControl: 'no-cache')
+        cacheControl: 'public, max-age=31536000'
+      }
+    })
+
+    console.log(`${savePath} uploaded to ${bucket.name}.`)
+
+    return res.status(200).json({
       stats: fileStat
     })
   } catch (err) {
-    return res.status(500).json({ message: 'Zip failed' })
+    console.error(err)
+    return res.status(500).json({ message: 'Failed' })
   }
 })
 export default {
