@@ -90,6 +90,9 @@
       </b-navbar>
       <b-container fluid>
         <div class="py-3">
+          <b-alert show variant="warning" class="border-warning"
+            >This is a work in progress</b-alert
+          >
           <NuxtChild :key="$route.params.id" />
         </div>
       </b-container>
