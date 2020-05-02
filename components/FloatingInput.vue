@@ -37,7 +37,7 @@ export default {
 </script>
 <style module>
 .floatingLabel {
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .floating,
@@ -74,5 +74,7 @@ export default {
   transform: translate(0.8rem, 0.899rem) scale(1.2);
   top: 0;
   position: absolute;
+  font-weight: 400;
+  font-style: italic;
 }
 </style>
