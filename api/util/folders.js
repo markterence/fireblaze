@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const path = require('path')
 const fs = require('fs-extra')
 const hiddenPrefix = '.'
@@ -9,7 +11,9 @@ function isDirectory(file) {
   try {
     return fs.statSync(file).isDirectory()
   } catch (e) {
-    if (process.env.APP_DEBUG) console.warn(e.message)
+    if (process.env.APP_DEBUG) {
+      console.warn(e.message)
+    }
   }
   return false
 }
