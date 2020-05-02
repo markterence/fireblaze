@@ -1,5 +1,5 @@
-import bodyParser from 'body-parser'
-import session from 'express-session'
+const bodyParser = require('body-parser')
+const session = require('express-session')
 
 module.exports = {
   mode: 'universal',
@@ -50,25 +50,25 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: '<apiKey>',
-          authDomain: '<authDomain>',
-          databaseURL: '<databaseURL>',
-          projectId: '<projectId>',
-          storageBucket: '<storageBucket>',
-          messagingSenderId: '<messagingSenderId>',
-          appId: '<appId>',
-          measurementId: '<measurementId>'
-        },
-        services: {
-          auth: true // Just as example. Can be any other service.
-        }
-      }
-    ]
+    '@nuxtjs/dotenv'
+    // [
+    //   '@nuxtjs/firebase',
+    //   {
+    //     config: {
+    //       apiKey: '<apiKey>',
+    //       authDomain: '<authDomain>',
+    //       databaseURL: '<databaseURL>',
+    //       projectId: '<projectId>',
+    //       storageBucket: '<storageBucket>',
+    //       messagingSenderId: '<messagingSenderId>',
+    //       appId: '<appId>',
+    //       measurementId: '<measurementId>'
+    //     },
+    //     services: {
+    //       auth: true // Just as example. Can be any other service.
+    //     }
+    //   }
+    // ]
   ],
   /*
    ** Axios module configuration
