@@ -103,8 +103,7 @@ export default {
         }
       ],
       list: [],
-      folder:
-        '/home/coffeekitkat/projects/production/sync-up/.fireblaze-appdata',
+      folder: '',
       selectedFiles: []
     }
   },

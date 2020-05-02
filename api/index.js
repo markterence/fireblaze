@@ -156,6 +156,7 @@ router.post('/fireblaze-start', async (req, res) => {
     // )
     const bucket = firebaseAdmin.storage().bucket()
     await bucket.upload(savePath, {
+      resumable: false,
       // Support for HTTP requests made with `Accept-Encoding: gzip`
       gzip: true,
       // By setting the option `destination`, you can change the name of the
