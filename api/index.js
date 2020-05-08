@@ -1,5 +1,4 @@
 import express from 'express'
-
 import { admin as firebaseAdmin } from './firebase/admin'
 
 // Create express router
@@ -88,7 +87,10 @@ router.post('/fireblaze-start', async (req, res) => {
   // ensure no dot on start of name
   basename = basename.replace(/^\.*/, '')
 
-  const savePath = `${ARTIFACTS_PATH}/${basename}_${artifactFilename}.zip`
+  const savePath = path.join(
+    `${ARTIFACTS_PATH}`,
+    `${basename}_${artifactFilename}.zip`
+  )
   console.log(`SavePath`, savePath)
 
   // eslint-disable-next-line no-unused-vars
@@ -149,30 +151,38 @@ router.post('/fireblaze-start', async (req, res) => {
   }
 
   try {
-    await zip(selectedFiles, savePath)
-    const fileStat = fs.statSync(savePath)
-    // const fileStat = fs.statSync(
-    //   '/home/coffeekitkat/projects/production/sync-up/.fireblaze-appdata/config.json'
-    // )
-    const bucket = firebaseAdmin.storage().bucket()
-    await bucket.upload(savePath, {
-      resumable: false,
-      // Support for HTTP requests made with `Accept-Encoding: gzip`
-      gzip: true,
-      // By setting the option `destination`, you can change the name of the
-      // object you are uploading to a bucket.
-      metadata: {
-        // Enable long-lived HTTP caching headers
-        // Use only if the contents of the file will never change
-        // (If the contents will change, use cacheControl: 'no-cache')
-        cacheControl: 'public, max-age=31536000'
+    if (process.env.ENABLE_ZIP) {
+      await zip(selectedFiles, savePath)
+      const fileStat = fs.statSync(savePath)
+      console.log(`Saved to ${savePath}`)
+
+      if (process.env.ENABLE_FIREBASE) {
+        const bucket = firebaseAdmin.storage().bucket()
+        await bucket.upload(savePath, {
+          resumable: false,
+          // Support for HTTP requests made with `Accept-Encoding: gzip`
+          gzip: true,
+          // By setting the option `destination`, you can change the name of the
+          // object you are uploading to a bucket.
+          metadata: {
+            // Enable long-lived HTTP caching headers
+            // Use only if the contents of the file will never change
+            // (If the contents will change, use cacheControl: 'no-cache')
+            cacheControl: 'public, max-age=31536000'
+          }
+        })
+
+        console.log(`${savePath} uploaded to ${bucket.name}.`)
       }
-    })
 
-    console.log(`${savePath} uploaded to ${bucket.name}.`)
+      return res.status(200).json({
+        stats: fileStat
+      })
+    }
 
-    return res.status(200).json({
-      stats: fileStat
+    return res.json(200).json({
+      stats:
+        'Test Mode: You are seeing this because it seems like `ENABLE_ZIP` and `ENABLE_FIREBASE` is disabled.'
     })
   } catch (err) {
     console.error(err)
