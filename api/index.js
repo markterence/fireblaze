@@ -180,9 +180,12 @@ router.post('/fireblaze-start', async (req, res) => {
       })
     }
 
-    return res.json(200).json({
-      stats:
-        'Test Mode: You are seeing this because it seems like `ENABLE_ZIP` and `ENABLE_FIREBASE` is disabled.'
+    return res.status(200).json({
+      // Sorry, I just need to mock the stats.size even on dev mode.
+      stats: {
+        size:
+          'Test Mode: You are seeing this because it seems like `ZIP` and `FIREBASE` is disabled.'
+      }
     })
   } catch (err) {
     console.error(err)
