@@ -2,9 +2,9 @@
 
 > My ~~top-notch~~ Nuxt.js project
 
-## Demo Video
+## Screenshots and Demo Video
 
-![fireblaze-demo-video](https://coffeekitkat.keybase.pub/static/fireblaze-demo-video.mp4)
+[![fireblaze-demo-video](./docs/assets/Screenshot_from_fireblaze-demo.png)](https://coffeekitkat.keybase.pub/static/fireblaze-demo-video.mp4)
 
 ## Build Setup
 
