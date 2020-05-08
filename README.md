@@ -2,6 +2,10 @@
 
 > My ~~top-notch~~ Nuxt.js project
 
+## Demo Video
+
+![fireblaze-demo-video](https://coffeekitkat.keybase.pub/static/fireblaze-demo-video.mp4)
+
 ## Build Setup
 
 ```bash
