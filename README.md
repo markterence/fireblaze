@@ -23,7 +23,7 @@ $ yarn start
 
 Create a `.env` file. Example `.env` file:
 
-```
+```ini
 BASE_URL=http://localhost:3000
 
 # This is your starting admin login credential
