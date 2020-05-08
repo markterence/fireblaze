@@ -4,7 +4,8 @@
 
 ## Screenshots and Demo Video
 
-[![fireblaze-demo-video](./docs/assets/Screenshot_from_fireblaze-demo.png)](https://coffeekitkat.keybase.pub/static/fireblaze-demo-video.mp4)
+<a href="https://coffeekitkat.keybase.pub/static/fireblaze-demo-video.mp4" target="_blank"><img src="./docs/assets/Screenshot_from_fireblaze-demo.png" 
+alt="demo-video"/></a>
 
 ## Build Setup
 
