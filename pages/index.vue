@@ -1,7 +1,6 @@
 <template>
   <div>
     <Sidebar />
-
     <div :class="$style.content">
       <HeaderNav />
 
