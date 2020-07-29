@@ -40,7 +40,7 @@
     "firebase": "^7.14.2",
     "firebase-admin": "^8.11.0",
     "fs-extra": "^9.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lowdb": "^1.0.0",
     "nodeJs-zip": "^1.0.4",
     "nuxt": "^2.0.0"

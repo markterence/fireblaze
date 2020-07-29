@@ -1039,11 +1039,6 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.2.39.tgz#32ce49e0ba54d831750afde59e32889bef444fd3"
   integrity sha512-V5oQjtYxHlEpWdQr68ZFo8T+3NVccrTieRy8RnzYIasCeptxOxwYUG0cAAKmalgrrrfRJdXup8h5ybi3XSW9Hw==
 
-"@fortawesome/fontawesome-free@^5.11.2", "@fortawesome/fontawesome-free@^5.7.2":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz#fcb113d1aca4b471b709e8c9c168674fbd6e06d9"
-  integrity sha512-xKOeQEl5O47GPZYIMToj6uuA2syyFlq9EMSl2ui0uytjY9xbe8XS0pexNWmxrdcCyNGyDmLyYw5FtKsalBUeOg==
-
 "@google-cloud/common@^2.1.1":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-2.4.0.tgz#2783b7de8435024a31453510f2dab5a6a91a4c82"
@@ -4409,11 +4404,6 @@ dotenv@^8.1.0, dotenv@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-
-downloadjs@^1.4.7:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/downloadjs/-/downloadjs-1.4.7.tgz#f69f96f940e0d0553dac291139865a3cd0101e3c"
-  integrity sha1-9p+W+UDg0FU9rCkROYZaPNAQHjw=
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -7864,10 +7854,10 @@ lodash.zip@^4.2.0:
   resolved "https://registry.yarnpkg.com/lodash.zip/-/lodash.zip-4.2.0.tgz#ec6662e4896408ed4ab6c542a3990b72cc080020"
   integrity sha1-7GZi5IlkCO1KtsVCo5kLcswIACA=
 
-lodash@4, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.5:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+lodash@4, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.3, lodash@^4.17.5:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -12270,11 +12260,6 @@ vary@^1.1.2, vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vee-validate@^2.1.7:
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-2.2.15.tgz#dc6c925d21e57288d3308fe5a39a0941036c575a"
-  integrity sha512-4TOsI8XwVkKVLkg8Nhmy+jyoJrR6XcTRDyxBarzcCvYzU61zamipS1WsB6FlDze8eJQpgglS4NXAS6o4NDPs1g==
-
 vendors@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
@@ -12324,35 +12309,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-ads-form-builder@^0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/vue-ads-form-builder/-/vue-ads-form-builder-0.1.15.tgz#71a1fd53893914f199fd0313c68a5449557a10c5"
-  integrity sha512-7J3itnT+MHqODyO39JkGetREA1YlnNVHYj6KGlT9uGMnNr1H7NmTStasoZ1bpHU7AJ5Uyyp7tuWZl105H7DEPw==
-  dependencies:
-    "@fortawesome/fontawesome-free" "^5.7.2"
-    vee-validate "^2.1.7"
-    vue "^2.6.6"
-    vue-perfect-scrollbar "^0.1.0"
-
-vue-ads-pagination@^2.1.7:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/vue-ads-pagination/-/vue-ads-pagination-2.1.7.tgz#be1fb988966a7eed3e592c7b9295f112cc0f260f"
-  integrity sha512-uvWHvHjG3KhdiVeLm4v5DP4K3+MlczizSLCuILNHnWghvt6q6og3L7k8fGuyXFyqMOBftEdV90WU6wRcNCqwtA==
-  dependencies:
-    "@fortawesome/fontawesome-free" "^5.11.2"
-    vue "^2.6.10"
-
-vue-ads-table-tree@^2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/vue-ads-table-tree/-/vue-ads-table-tree-2.4.2.tgz#eef6f35d2cf9631ccbd3b705abcefd8a5de79079"
-  integrity sha512-PBWA1fFw/AdislGkb+zSsvdPQaLrabxymrJq44wsuKIcQUeIWA6bGS/0239XbpsWkuIt6Gtj6yIoSypj5A3qAw==
-  dependencies:
-    "@fortawesome/fontawesome-free" "^5.11.2"
-    vue "^2.6.10"
-    vue-ads-form-builder "^0.1.15"
-    vue-ads-pagination "^2.1.7"
-    vue-json-excel "^0.2.98"
-
 vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
@@ -12392,13 +12348,6 @@ vue-jest@^4.0.0-0:
     source-map "^0.5.6"
     ts-jest "^23.10.5"
 
-vue-json-excel@^0.2.98:
-  version "0.2.98"
-  resolved "https://registry.yarnpkg.com/vue-json-excel/-/vue-json-excel-0.2.98.tgz#1d882fd97f8bd7caa1864014e3680b2ddd0e94bc"
-  integrity sha512-hPA3/cOe5nGbEZiJyfpdBIdqBExxF6EhMhpX6vC654PYbTVzdzp7O9ZsC1AgqbgRDR8VjzAaPaEeHg2vGS88FQ==
-  dependencies:
-    downloadjs "^1.4.7"
-
 vue-loader@^15.9.1:
   version "15.9.1"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.9.1.tgz#bd2ab8f3d281e51d7b81d15390a58424d142243e"
@@ -12421,11 +12370,6 @@ vue-no-ssr@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
-
-vue-perfect-scrollbar@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vue-perfect-scrollbar/-/vue-perfect-scrollbar-0.1.0.tgz#be12c23d1753a013fa81ceb9872cb5fc0b1b4960"
-  integrity sha512-l/ZEidPDFplXeDtxs+gO3D8efhwqyIEcUtfvfRujCQemcn39ghpSNoizWWZYI6Ro0iz3yP+w7LqNxEBjE+T1qQ==
 
 vue-router@^3.1.6:
   version "3.1.6"
@@ -12467,12 +12411,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue-tree-list@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/vue-tree-list/-/vue-tree-list-1.4.4.tgz#bbd1efd97a4cac582aa2908461574d914f5625fa"
-  integrity sha512-Ew9VAZvop4R+Cfu+wmbcNh/ITOYYX5VxumnQKlVDF7buV+3dOiKKv3+hgWwRD64Y8SW9zh15bqqFNdvuM6JMiw==
-
-vue@^2.6.10, vue@^2.6.11, vue@^2.6.6:
+vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
